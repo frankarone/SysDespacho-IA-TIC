@@ -2,7 +2,7 @@ from funciones import clasificar_despacho
 
 
 def test_clasifica_a_tiempo():
-    assert clasificar_despacho(31) == "A_TIEMPOs"
+    assert clasificar_despacho(31) == "A_TIEMPO"
 
 
 def test_clasifica_proximo():
