@@ -1,0 +1,31 @@
+# Entorno virtual
+.venv/
+.venv-1/
+.venv-2/
+
+# Variables y credenciales
+.env
+credentials.json
+service_account.json
+token.json
+
+# Archivos generados por Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Pruebas
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editores y sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Configuración privada de WAHA
+waha/.env
+waha/sessions/
