@@ -1,0 +1,11 @@
+.venv/
+.venv-1/
+.venv-2/
+__pycache__/
+.pytest_cache/
+.git/
+.env
+service_account.json
+data/
+waha/
+*.pyc
