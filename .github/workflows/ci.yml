@@ -32,3 +32,9 @@ jobs:
 
       - name: Ejecutar pruebas automatizadas
         run: python -m pytest -v
+
+      - name: Validar Docker Compose de IoT
+        run: docker compose -f docker-compose.iot.yml config
+
+      - name: Construir imagen IoT
+        run: docker build -f Dockerfile.iot -t sysdespacho-iot:test .
