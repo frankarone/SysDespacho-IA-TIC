@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY iot_backend ./iot_backend
 COPY iot_frontend ./iot_frontend
+COPY .streamlit ./.streamlit
 
 RUN mkdir -p /app/data
 
