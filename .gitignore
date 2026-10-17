@@ -29,3 +29,9 @@ Thumbs.db
 # Configuración privada de WAHA
 waha/.env
 waha/sessions/
+
+
+# Datos generados por IoT
+data/
+*.db
+*.db-journal

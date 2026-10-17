@@ -1,0 +1,43 @@
+services:
+  receptor-iot:
+    build:
+      context: .
+      dockerfile: Dockerfile.iot
+    image: sysdespacho-iot:1.0
+    container_name: sysdespacho-receptor-iot
+    command: python -m iot_backend.receptor_mqtt
+    environment:
+      MQTT_BROKER: broker.hivemq.com
+      MQTT_PORT: "1883"
+      MQTT_TOPIC: sysdespacho/frankarone/ta3/acelerometro
+      IOT_DATABASE_PATH: /app/data/lecturas_iot.db
+    volumes:
+      - datos_iot:/app/data
+    restart: unless-stopped
+
+  panel-iot:
+    build:
+      context: .
+      dockerfile: Dockerfile.iot
+    image: sysdespacho-iot:1.0
+    container_name: sysdespacho-panel-iot
+    command:
+      - python
+      - -m
+      - streamlit
+      - run
+      - iot_frontend/dashboard.py
+      - --server.address=0.0.0.0
+      - --server.port=8501
+    environment:
+      IOT_DATABASE_PATH: /app/data/lecturas_iot.db
+    volumes:
+      - datos_iot:/app/data
+    ports:
+      - "8502:8501"
+    depends_on:
+      - receptor-iot
+    restart: unless-stopped
+
+volumes:
+  datos_iot:

@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED=1
+ENV IOT_DATABASE_PATH=/app/data/lecturas_iot.db
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY iot_backend ./iot_backend
+COPY iot_frontend ./iot_frontend
+
+RUN mkdir -p /app/data
+
+CMD ["python", "-m", "iot_backend.receptor_mqtt"]
